@@ -1,0 +1,3 @@
+{"asctime": "2023-07-05 15:29:32.631", "levelname": "DEBUG", "module": "log_utils", "funcName": "configure_return_logger", "message": "Logging initialized at level 10"}
+{"asctime": "2023-07-05 15:29:32.770", "levelname": "DEBUG", "module": "log_utils", "funcName": "configure_return_logger", "message": "Logging initialized at level 10"}
+{"asctime": "2023-07-05 15:29:41.019", "levelname": "INFO", "module": "app", "funcName": "home", "message": "Message to show: I like cats"}
