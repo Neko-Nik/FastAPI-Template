@@ -1,6 +1,6 @@
 # FastAPI Template
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Neko-Nik/FastAPI-Template/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)]([https://github.com/Neko-Nik/FastAPI-Template/blob/main/LICENSE](https://github.com/Neko-Nik/FastAPI-Template/blob/master/LICENSE))
 [![GitHub Issues](https://img.shields.io/github/issues/Neko-Nik/fastapi-template.svg)](https://github.com/Neko-Nik/FastAPI-Template/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Neko-Nik/fastapi-template.svg)](https://github.com/Neko-Nik/FastAPI-Template/pulls)
 
