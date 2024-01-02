@@ -15,7 +15,7 @@ TEST*.xml
 
 
 # Python virtual environment
-virtualenv/
+.venv/
 
 
 # log files (uncomment to ignore)
