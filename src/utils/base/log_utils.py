@@ -3,7 +3,6 @@ This module contains utility functions for logging.
 This will be used to configure the logger for the application.
 """
 
-import os
 import logging
 import time
 import traceback
@@ -24,24 +23,18 @@ class CustomJsonFormatter(jsonlogger.JsonFormatter):
 
     def add_fields(self, log_record, record, message_dict):
         """Add custom fields to the log record"""
-        super(CustomJsonFormatter, self).add_fields(log_record, record,
-                                                    message_dict)
+        super(CustomJsonFormatter, self).add_fields(log_record, record, message_dict)
         if record.exc_info:
             exception_text = traceback.format_exception(*record.exc_info)
             log_record['exception'] = exception_text
 
 
-
-
 def configure_return_logger(LOG_LEVEL, LOG_FILE_PATH):
     """Configure the logger and return it"""
-    log_formatter = CustomJsonFormatter(
-        "%(asctime)s %(levelname)s %(module)s - %(funcName)s: %(message)s"
-    )
+    log_formatter = CustomJsonFormatter("%(asctime)s %(levelname)s %(module)s - %(funcName)s: %(message)s")
+
     # Configure the log handler
-    os.makedirs('logs', exist_ok=True)
-    log_handler = RotatingFileHandler(
-        LOG_FILE_PATH, maxBytes=50 * 1024 * 1024, backupCount=2)
+    log_handler = RotatingFileHandler(LOG_FILE_PATH, maxBytes=1024*1024*1024, backupCount=10)
     log_handler.setLevel(LOG_LEVEL)
     log_handler.setFormatter(log_formatter)
 
