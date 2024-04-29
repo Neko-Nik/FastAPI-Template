@@ -34,7 +34,7 @@ RUN mkdir -p /var/log/api
 WORKDIR /app
 
 # Copy the source code to the working directory
-COPY app/ api/
+COPY api/ api/
 COPY src/ src/
 COPY templates/ templates/
 COPY scripts/entry_point.sh .
