@@ -42,31 +42,17 @@ pip3 install -r requirements.txt
 
 ## Usage
 
-To run the application locally, use the following command:
+To run the application locally, using Uvicorn or Gunicorn:
 
-```bash
-python3 app.py
-```
+Using Uvicorn: `uvicorn api.main:app --reload --port 8086`
 
-The application will start running on `http://localhost:8000`.
+Using Gunicorn: `gunicorn -k uvicorn.workers.UvicornWorker api.main:app`
+
+The application will start running on [http://localhost:8086](http://localhost:8086).
 
 ## Deployment
 
-For production deployment, the template provides bash scripts for running the application with Gunicorn, serving it over HTTPS, and more. Customize these scripts according to your specific deployment needs.
-
-Note: Change the following `workers, threads, timeout, keyfile, certfile` according to your needs.
-
-To start the application in production mode, use the following command:
-
-```bash
-bash scripts/start_api.sh
-```
-
-To Restart the application in production mode, use the following command:
-
-```bash
-bash scripts/restart_api.sh
-```
+For production deployment, the template provides docker CI pipeline and `docker-compose` configuration files for easy deployment.
 
 ## Contributing
 
@@ -76,7 +62,7 @@ Contributions are welcome! If you'd like to contribute to FastAPI Template, plea
 2. Create a new branch for your feature or bug fix
 3. Make your changes and commit them
 4. Push your changes to your fork
-5. Submit a pull request to the `main` branch of the original repository
+5. Submit a pull request to the `master` branch of the original repository
 
 Please make sure to follow the existing code style and add tests for any new features or bug fixes.
 

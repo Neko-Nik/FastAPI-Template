@@ -33,9 +33,9 @@ RUN mkdir -p /var/log/api
 WORKDIR /app
 
 # Copy the source code to the working directory
+COPY app/ api/
 COPY src/ src/
 COPY templates/ templates/
-COPY app/ .
 COPY scripts/entry_point.sh .
 
 CMD ["chmod", "+x", "/app/entry_point.sh"]
