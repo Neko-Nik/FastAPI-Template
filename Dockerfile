@@ -1,5 +1,6 @@
 # official Debian 12 base image
 FROM python:3.12-bookworm
+MAINTAINER "nikhil@nekonik.com"
 
 # No user intraction for this 
 ENV DEBIAN_FRONTEND noninteractive
