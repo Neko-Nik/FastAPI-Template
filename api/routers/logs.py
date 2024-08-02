@@ -24,17 +24,15 @@ router = APIRouter()
 
 
 # Logs of API
-@router.get("/logs", response_class=HTMLResponse, tags=["Logs"], summary="Logs of API")
+@router.get("/api", response_class=HTMLResponse, tags=["Logs"], summary="Logs of API")
 def view_logs(request: Request, passwd: str="") -> HTMLResponse:
     """
     This endpoint is used to view the logs of the API in a web page
-    Just go to /logs to view the logs
+    Just go to /logs/api?passwd=neko-nik to view the logs
     """
     if passwd != "neko-nik":
-        return JSONResponse(
-            content={"detail": "Not Found"},
-            status_code=status.HTTP_404_NOT_FOUND
-        )
+        # Fake 404 error to prevent unauthorized access
+        return JSONResponse(content={"detail": "Not Found"}, status_code=status.HTTP_404_NOT_FOUND)
 
     logs = []
     with open(LOG_FILE_PATH, 'r') as file:
@@ -43,7 +41,7 @@ def view_logs(request: Request, passwd: str="") -> HTMLResponse:
                 log_entry = json.loads(line)
                 logs.append(log_entry)
             except json.JSONDecodeError:
-                pass
+                pass    # Skip the line if it is not a valid JSON
 
     logs.reverse()  # To show the latest logs first
 

@@ -7,17 +7,17 @@ from src.utils.base.libraries import (
     CORSMiddleware,
     JSONResponse,
     FastAPI,
-    Request,
-    uvicorn
+    Request
 )
-from .routers import logs_router
+from .routers import logs_router, neko_router
 from src.utils.models import All_Exceptions
+from src.database import init_db
 
 
 # Initialization
 app = FastAPI(
     title="Neko Nik",
-    description="This is the API for Neko Nik",
+    description="This is the API Template of Neko Nik",
     version="1.0.0",
     # docs_url=None,
     # redoc_url=None,
@@ -25,6 +25,7 @@ app = FastAPI(
     redoc_url="/redoc",
     include_in_schema=True,
 )
+init_db()
 
 # Add CROCS middle ware to allow cross origin requests
 app.add_middleware(
@@ -32,7 +33,7 @@ app.add_middleware(
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],
+    allow_headers=["*"]
 )
 
 # Exception handler for wrong input
@@ -45,9 +46,5 @@ async def input_data_exception_handler(request: Request, exc: All_Exceptions):
 
 
 #    Endpoints    #
-app.include_router(router=logs_router)
-
-
-if __name__ == '__main__':
-    # reload=True - server will automatically restart after code changes
-    uvicorn.run('app:app', host='0.0.0.0', port=8086, reload=True)
+app.include_router(router=logs_router, prefix="/logs")
+app.include_router(router=neko_router, prefix="/neko")

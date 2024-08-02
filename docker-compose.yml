@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   xxx:
     # The image is available on private docker hub, you can use your own image if you have built it

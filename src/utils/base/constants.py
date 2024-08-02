@@ -17,13 +17,13 @@ POSTGRES_DB_DATABASE = os.environ.get("POSTGRES_DB_DATABASE", "postgres")
 NUMBER_OF_LOGS_TO_DISPLAY = int(os.environ.get("NUMBER_OF_LOGS_TO_DISPLAY", 100))
 
 ### Uncomment the below lines to log in the docker container (Production)
-LOG_LEVEL = int(os.environ.get("LOG_LEVEL", 20))
-LOG_FILE_PATH = "/var/log/api/logs.jsonl"
+# LOG_LEVEL = int(os.environ.get("LOG_LEVEL", 20))
+# LOG_FILE_PATH = "/var/log/api/logs.jsonl"
 
 ### Uncomment the below lines to log to the local file (Development)
-# LOG_LEVEL = 10
-# LOG_FILE_PATH = "logs/logs.jsonl"
+LOG_LEVEL = 10
+LOG_FILE_PATH = "logs/logs.jsonl"
 
 
 # Other constants
-NEKO_NIK = "Neko Nik"
+INTERNAL_API_KEY = "Neko Nik"

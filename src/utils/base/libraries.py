@@ -4,7 +4,7 @@ any new library should be added here and imported in the respective files
 """
 
 # FastAPI libraries
-from fastapi import FastAPI, File, UploadFile , Form, Request, status, Response, Depends, APIRouter
+from fastapi import FastAPI, File, UploadFile, Form, Request, status, Response, Depends, APIRouter, BackgroundTasks
 from fastapi.responses import JSONResponse , PlainTextResponse , HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
@@ -12,18 +12,19 @@ from fastapi.security import APIKeyHeader
 import uvicorn
 
 # Object data modeling libraries
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field
 
+# SQLAlchemy libraries
+from sqlalchemy import create_engine, Column, String, Integer, ForeignKey, DateTime, JSON, or_, text
+from sqlalchemy.orm import relationship, sessionmaker, declarative_base, Session
 
 # other libraries
-import json
-import re
-from functools import wraps
 from deprecated import deprecated
 from datetime import datetime
+from functools import wraps
 import subprocess
-
-# read env variables
+import json
+import re
 import os
 
 

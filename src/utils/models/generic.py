@@ -2,7 +2,7 @@
 This module contains the basic models for the application
 """
 
-from src.utils.base.libraries import BaseModel, Field, validator
+from src.utils.base.libraries import BaseModel, Field
 
 
 class All_Exceptions(Exception):
@@ -22,20 +22,11 @@ class Error(BaseModel):
     message: str = Field(..., title="Message", description="Error message")
     status_code: int = Field(..., title="Status Code", description="Error status code")
 
-    @validator('status_code')
-    def status_code_must_be_in_range(cls, v):
-        """
-        Status code must be in range 100 to 599
-        """
-        if v < 100 or v > 599:
-            raise ValueError('status code must be in range 100 to 599')
-        return v
-
     class Config:
         """
         Configuration for the model
         """
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "message": "Error message",
                 "status_code": 400
